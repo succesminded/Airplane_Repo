@@ -11,7 +11,8 @@ public class FlightDto {
 	private String arrivalCity;
 	private LocalDateTime arrivalDatetime;
 	private String flightNumber;
-	private String captain;	
+	private String captain;
+	private long waitingTime;
 	
 	public FlightDto(Integer id, String departureCity, LocalDateTime departureDatetime, String arrivalCity, LocalDateTime arrivalDatetime,
 			String flightNumber, String captain) {
@@ -89,4 +90,11 @@ public class FlightDto {
 		return d.toMinutes();
 	}
 
+	public long getWaitingTime() {
+		return waitingTime;
+	}
+	
+	public void setWaitingTime(long waitingTime) {
+		this.waitingTime = waitingTime;
+	}
 }

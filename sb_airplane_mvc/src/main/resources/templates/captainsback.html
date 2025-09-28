@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style>
+	table, th, td
+	{
+	  border: 1px solid black;
+	  border-collapse: collapse;
+	  padding: 20px;
+	}
+</style>
+
+
+</head>
+<body>
+
+	<h1>Captains back list:</h1>
+
+	<div th:if="${captainDtoList != null}">
+		<table>
+			<tr>
+				<th>Name</th>
+			</tr>
+	
+			<tr th:each="captain : ${captainDtoList}">
+				<td	th:text="${captain.getName()}"></td>
+			</tr>
+		</table>
+	</div>
+
+</body>
+</html>

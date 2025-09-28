@@ -13,4 +13,11 @@ public interface FlightsRepository extends CrudRepository<Flight, Integer>{
 
 	@Query("SELECT * FROM flights ORDER BY departure_datetime ASC")
 	List<Flight> getAllFlightsDataOrderByDepartureDateTimeAsc();
+	
+	@Query("SELECT DISTINCT departure_city FROM flights ORDER BY 1 ASC")
+	List<String> getAllDeaprtureCityList();
+	
+	@Query("SELECT DISTINCT arrival_city FROM flights ORDER BY 1 ASC")
+	List<String> getAllArrivalCityList();
+
 }

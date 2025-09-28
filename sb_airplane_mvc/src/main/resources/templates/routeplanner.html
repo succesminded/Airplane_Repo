@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style>
+	table, th, td
+	{
+	  border: 1px solid black;
+	  border-collapse: collapse;
+	  padding: 20px;
+	}
+</style>
+
+</head>
+<body>
+
+	<h1>Route planner</h1>
+
+	<form method="post" action="/routeplanner/getroute">
+		
+		<label>Choose a departure city:</label>
+		
+		<select name="depcity">
+			<option th:each="depcity : ${routePlannerDtoList.getDepCityList()}" th:text="${depcity}" th:value="${depcity}"></option>	
+		</select>
+		
+		<br></br>
+		
+		<label>Choose an arrival city:</label>
+		
+		<select name="arrcity">
+			<option th:each="arrcity : ${routePlannerDtoList.getArrCityList()}" th:text="${arrcity}" th:value="${arrcity}"></option>	
+		</select>
+		
+		<br></br>
+		<input text="Find route" type="submit"/>
+		
+	</form>
+	
+	<br></br>
+
+	<div th:if="${routePlannerDtoList != null}">
+		<table>
+			<tr>
+			</tr>
+			<tr th:each="routePlannerDto : ${routePlannerDtoList.getRoutePlannerDtoList()}">
+				<td>
+					<table>
+						<tr>
+							<th>Id</th>
+							<th>Departure city</th>
+							<th>Departure DateTime</th>
+							<th>Arrival City</th>
+							<th>Arrival DateTime</th>
+							<th>Flight number</th>
+							<th>Captain</th>
+							<th>Waiting time</th>
+						</tr>
+						
+						<tr th:each="flight : ${routePlannerDto.getFlightDtoList()}">
+							<td	th:text="${flight.getId()}"></td>
+							<td	th:text="${flight.getDepartureCity()}"></td>
+							<td	th:text="${flight.getDepartureDatetime()}"></td>
+							<td	th:text="${flight.getArrivalCity()}"></td>
+							<td	th:text="${flight.getArrivalDatetime()}"></td>
+							<td	th:text="${flight.getFlightNumber()}"></td>
+							<td	th:text="${flight.getCaptain()}"></td>
+							<td	th:text="${flight.getWaitingTime()}"></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</div>
+	
+	<div th:if="${routePlannerDtoList.getRoutePlannerDtoList().isEmpty()}">
+		
+		<p>Sajnos ilyen utat nem tudtunk tervezni a rendelkezésre álló járatok alapján.</p>
+	
+	</div>
+
+</body>
+</html>

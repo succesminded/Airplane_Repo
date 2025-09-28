@@ -5,6 +5,8 @@ public class CaptainDto {
 	private String name;
 	private long flyTime;
 	
+	private String departureCity;
+	
 	public CaptainDto(String name, long flyTime) {
 		super();
 		this.name = name;
@@ -29,6 +31,14 @@ public class CaptainDto {
 	
 	public void addToFlyTime(long flyTime) {
 		this.flyTime+= flyTime;
+	}
+
+	public String getDepartureCity() {
+		return departureCity;
+	}
+
+	public void setDepartureCity(String departureCity) {
+		this.departureCity = departureCity;
 	}
 	
 }
